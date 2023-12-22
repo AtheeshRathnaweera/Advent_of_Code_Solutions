@@ -74,7 +74,7 @@ class Main:
     def get_part_02_results(self):
         hum_to_loc_mappings = self.mappings["humidity-to-location"]
         for mapping in hum_to_loc_mappings:
-            print(f"\nstarted the search for: {mapping}")
+            print(f"\nstarted the search for: {mapping}\n")
             # calculate the range
             dest_val = mapping[0]
             val_range = mapping[2]
@@ -82,7 +82,7 @@ class Main:
             result = self.find_seed_vals_for_location_range(
                 dest_val, dest_val + val_range
             )
-            print(f"completed the search for: {mapping} result: {result}")
+            print(f"\ncompleted the search for: {mapping} result: {result}")
             if result is not None:
                 return result
 
@@ -105,7 +105,7 @@ class Main:
                 source_vals.append(prev_source_val)
 
             if self.is_seed_exist_in_range(source_vals[-1]):
-                print(f"\nProcess {current_process.name} is value found: {val}")
+                print(f"Process {current_process.name} is value found: {val}")
                 queue.put(val)
                 return
 
