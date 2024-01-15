@@ -8,7 +8,7 @@ import multiprocessing
 
 class Main:
     def __init__(self):
-        self.input_file = "../inputs/original.txt"
+        self.input_file = "../inputs/original-half.txt"
         self.springs_records_df = None
 
     def get_sum_of_arrangements(self):
