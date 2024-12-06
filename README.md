@@ -12,6 +12,9 @@ Visit the [Advent of Code site](https://adventofcode.com) to join in on the fun!
 
 ## 🛠 How to Use?
 - Clone this repo (or browse year by year).
+- You can find the questions for each year at the following links:
+  - [2023 Questions](https://adventofcode.com/2023)
+  - [2024 Questions](https://adventofcode.com/2024)
 
 ## 🎅 Happy Coding!
 May your code be bug-free and your coffee endless! ☕💻
