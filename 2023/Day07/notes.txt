@@ -1,0 +1,31 @@
+GETTING OCCURENCES
+letter_counts = Counter(c.lower() for c in element)  # Count letters efficiently
+
+Output:
+Letter counts: Counter({'a': 3, 'b': 3})
+
+
+CHECKING OCCURENCES
+my_dict = {'a': 3, 'b': 2}
+expected_values_string = '32'
+
+# Efficiently extract and sort values in descending order:
+sorted_values = sorted(my_dict.values(), reverse=True)
+
+# Convert sorted values to string efficiently:
+sorted_values_string = ''.join(map(str, sorted_values))
+
+# Compare directly with the expected string:
+if sorted_values_string == expected_values_string:
+    print("Values are as expected")
+else:
+    print("Values are not as expected")
+
+
+SORTING BY STRENGTHS
+data = [('23A454', (2, 9, 12, 5)), ('12B345', (1, 3, 5, 7)), ('45C678', (4, 6, 8, 10))]
+
+# Sort using the first element as the key
+sorted_data = sorted(data, key=lambda x: x[0])
+
+print(sorted_data)

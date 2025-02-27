@@ -1,0 +1,5 @@
+Part 01 -> 249390788
+Part 02 -> 248750248
+
+Incorrect
+Part 02 -> 248940641 (too high)
