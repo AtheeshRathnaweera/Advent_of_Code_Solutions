@@ -37,7 +37,7 @@ class Main:
                 values = list(map(int, trimmed_line.split(" ")))
 
                 # populate the lists
-                if len(values) >= 2:  # Ensure valid data
+                if len(values) >= 2:
                     self.left_list.append(values[0])
                     self.right_list.append(values[1])
 
