@@ -4,6 +4,8 @@ Welcome to my **Advent of Code Solutions** repo! Every year, I tackle the daily 
 
 This repo contains all my solutions, along with my struggles, jokes, and occasional triumphs. If you need some inspiration, want to see how I solved a particular puzzle, or just need a laugh at my attempts, feel free to browse!
 
+Visit the [Advent of Code site](https://adventofcode.com) to join in on the fun!
+
 ## 🎉 Why Advent of Code?
 - It’s the perfect blend of **coding** and **holiday spirit**.
 - It challenges your **problem-solving** skills (and maybe your sanity).
