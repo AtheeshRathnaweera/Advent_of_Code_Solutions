@@ -7,8 +7,20 @@ class Main:
         self.input_file = "inputs/original.txt"
         self.patterns = []
 
+    def calculate_results(self, results, original_df, expected_df, index):
+        flat_original_df = original_df.values.flatten()
+        flat_expected_df = expected_df.values.flatten()
+        unmatching_count = (flat_original_df != flat_expected_df).sum().sum()
+
+        if unmatching_count == 0:
+            results[0] = index
+
+        if unmatching_count == 1:
+            results[1] = index
+
     def is_horizontal_reflect(self, df):
         num_rows = len(df)
+        results = [None, None]
 
         for row_index in range(1, num_rows):
             # divide the df into two parts
@@ -29,22 +41,22 @@ class Main:
                 expected_df = bottom_df.iloc[:top_df_size]
                 # reverse the rows order
                 expected_df = expected_df.iloc[::-1]
-
-                if (original_df.values == expected_df.values).all():
-                    return row_index
             else:
                 original_df = bottom_df
                 expected_df = top_df.iloc[top_df_size - bottom_df_size :]
                 # reverse the rows order
                 expected_df = expected_df.iloc[::-1]
 
-                if (bottom_df.values == expected_df.values).all():
-                    return row_index
+            self.calculate_results(results, original_df, expected_df, row_index)
 
-        return None
+            if results[0] is not None and results[1] is not None:
+                return results
+
+        return results
 
     def is_vertical_reflect(self, df):
         num_columns = len(df.columns)
+        results = [None, None]
 
         for column_index in range(1, num_columns):
             # divide the df into two parts
@@ -70,29 +82,42 @@ class Main:
                 expected_df = left_df.iloc[:, right_df_size * -1 :]
                 expected_df = expected_df.iloc[:, ::-1]
 
-            if (original_df.values == expected_df.values).all():
-                return column_index
+            self.calculate_results(results, original_df, expected_df, column_index)
 
-        return None
+            if results[0] is not None and results[1] is not None:
+                return results
+
+        return results
 
     def process(self):
-        summary = 0
+        part_01_res = 0
+        part_02_res = 0
         for index, pattern in enumerate(self.patterns):
             print(f"\npattern started: {index}")
-            column_index = self.is_vertical_reflect(pattern)
-            print(f"is_vertical_reflect: {column_index}")
 
-            if column_index is not None:
-                summary += column_index
+            v_results = self.is_vertical_reflect(pattern)
+            print(f"is_vertical_reflect: {v_results}")
+
+            if v_results[0] is not None:
+                part_01_res += v_results[0]
+
+            if v_results[1] is not None:
+                part_02_res += v_results[1]
+
+            if v_results[0] is not None and v_results[1] is not None:
                 continue
 
-            row_index = self.is_horizontal_reflect(pattern)
-            print(f"is_horizontal_reflect: {row_index}")
+            h_results = self.is_horizontal_reflect(pattern)
+            print(f"is_horizontal_reflect: {h_results}")
 
-            if row_index is not None:
-                summary += row_index * 100
+            if h_results[0] is not None:
+                part_01_res += h_results[0] * 100
 
-        print(f"\nsummary: {summary}")
+            if h_results[1] is not None:
+                part_02_res += h_results[1] * 100
+
+        print(f"\nPart 01: {part_01_res}")
+        print(f"Part 02: {part_02_res}")
 
     def read_input_file(self):
         with open(self.input_file, "r", encoding="utf-8") as file:
